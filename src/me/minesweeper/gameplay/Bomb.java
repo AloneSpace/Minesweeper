@@ -1,17 +1,9 @@
-package me.minesweeper;
+package me.minesweeper.gameplay;
 
-public class Gameplay {
+public class Bomb {
 
+    private int qty;
     private int[] bombDrop;
-    private int tableSize;
-    
-    public void printGameMenu() {
-        System.out.println("========== [ MineSweeper ] ==========");
-    }
-
-    public void startGame() {
-
-    }
 
     /**
      * @param position เพื่อเช็คตำแหน่งของระเบิด
@@ -24,19 +16,17 @@ public class Gameplay {
         return false;
     }
 
-    public void printTable() {
-
-    }
-
-
     /**
      * สุ่มตำแหน่งระเบิด และเก็บลงใน Array
      */
     public void randBombDropPosition() {
-        for (int i = 0; i < tableSize; i++) {
-            double randomBombDrop = Math.ceil(Math.random() * 5);
+        for (int i = 0; i < qty; i++) {
+            double randomBombDrop = Math.ceil(Math.random() * qty);
             bombDrop[i] = (int) randomBombDrop;
         }
     }
 
+    public void setQTYBomb(int qty) {
+        this.qty = qty;
+    }
 }
