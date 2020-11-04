@@ -26,7 +26,20 @@ public class Bomb {
         }
     }
 
+    /**
+     * @param qty ส่งค่าจำนวนระเบิดว่าต้องการเท่าไหร่
+     */
     public void setQTYBomb(int qty) {
         this.qty = qty;
+    }
+
+    /**
+     * @param position หาตำแหน่งระเบิดทั้งแกน X,Y และแนวเฉียงว่า ระเบิดอยู่แถวไหน
+     * @return ส่งค่าเมื่อผู้เล่นเลือกตำแหน่งนี้จะมีระเบิดอยู่ห่างจากบล็อคที่ผู้เล่นเลือกกี่บล็อค
+     */
+    public int findNearByBomb(int position) {
+        int nearBlock;
+        nearBlock = 1;
+        return nearBlock;
     }
 }
