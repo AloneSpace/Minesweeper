@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Bomb {
 
     private int qty;
-    private ArrayList<Integer> bombDrop = new ArrayList<>();
-    private ArrayList<Integer> safePosition = new ArrayList<>();
+    private ArrayList<Integer> bombDrop;
+    private ArrayList<Integer> safePosition;
 
     /**
      * @param position เพื่อเช็คตำแหน่งของระเบิด
@@ -24,6 +24,8 @@ public class Bomb {
      */
     public void randBombDropPosition() {
         double checkSame = 0;
+        bombDrop = new ArrayList<>();
+        safePosition = new ArrayList<>();
         while (bombDrop.size() < qty) {
             double randomBombDrop = Math.ceil(Math.random() * 25);
             if (!bombDrop.contains((int) randomBombDrop)) {
@@ -51,6 +53,10 @@ public class Bomb {
      */
     public String getSafePosition() {
         return safePosition.toString();
+    }
+
+    public int getSizeofSafePosition() {
+        return safePosition.size();
     }
 
     /**

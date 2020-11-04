@@ -8,30 +8,50 @@ public class Menu {
     /**
      * หน้านี้เปรียบเสมอหน้า GameMenu เพื่อเข้าสู่การเล่นเกม
      */
-    public void gameMenu(Input input, Player player, Bomb bomb) {
-        input.inputPlayerName(player);
+    public void gameMenu(boolean firstTime, Input input, Player player, Bomb bomb) {
+        if(firstTime) input.inputPlayerName(player);
+        String welcomeMsg = "\n=> Welcome " + player.getPlayerName() + " ( Round #" + player.getGamePlayed() + " )";
         input.inputBomb(bomb);
+        bomb.randBombDropPosition();
+        player.increaseGamePlayed();
+        System.out.println(welcomeMsg);
         startGame(input, player, bomb);
     }
     
     public void startGame(Input input, Player player, Bomb bomb) {
         Table table = new Table();
-        String playAgain = "Y";
-        String welcomeMsg = "\n=> Welcome " + player.getPlayerName() + " ( Round #" + player.getGamePlayed() + " )";
-        bomb.randBombDropPosition();
-        while(playAgain.equals("Y")|| playAgain.equals("y")) {
-            System.out.println(welcomeMsg);
+
+        String playAgain = "";
+        while(true) {
             table.printTable();
-            int position = input.inputPosition(table, bomb);
+            int position = input.inputPosition(this, table, bomb);
             boolean isBombDropPosition = bomb.isBombDropPosition(position);
-            if(isBombDropPosition) {
-                System.out.println("\n\n=============== [ " + Status.LOSE + " ]===============");
-                System.out.println("\nGotcha the bomb here.");
-                System.out.println("All position of bomb => " + bomb.getBombDrop());
-                System.out.println("Safety position => " + bomb.getSafePosition());
+            boolean isEndSelected = table.isEndSelected(bomb);
+            if(isEndSelected) {
+                gameStatus(bomb, "No bomb has been selected.", Status.WIN);
                 playAgain = input.inputPlayAgain();
+                if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
+                break;
+            }
+            if(isBombDropPosition) {
+                gameStatus(bomb, "Gotcha the bomb here.", Status.LOSE);
+                playAgain = input.inputPlayAgain();
+                if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
+                break;
             }
         }
 
+    }
+
+    /**
+     * @param bomb รับ Object Bomb เพื่อตรวจดูว่า ที่ไหนมีระเบิดและไม่มีระเบิด
+     */
+    public void gameStatus(Bomb bomb, String message, Status status) {
+        System.out.println("\n\n=============== [ " + status + " ]===============");
+        System.out.println("\n" + message);
+        System.out.println("All position of bomb => " + bomb.getBombDrop());
+        System.out.println("Safety position => " + bomb.getSafePosition());
+        System.out.println();
+        bomb.randBombDropPosition();
     }
 }

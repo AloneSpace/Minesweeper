@@ -12,6 +12,6 @@ public class Main {
         System.out.println("|\t\t\t\t\t|");
         System.out.println("---------------------\n");
         Controller controller = new Controller();
-        controller.getMenu().gameMenu(controller.getInput(), controller.getPlayer(), controller.getBomb());
+        controller.getMenu().gameMenu(true, controller.getInput(), controller.getPlayer(), controller.getBomb());
     }
 }

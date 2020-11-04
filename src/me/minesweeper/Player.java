@@ -5,11 +5,6 @@ public class Player {
     private String playerName;
     private int gamePlayed;
     private int gameWin;
-    private boolean isWin;
-
-    public Player() {
-        gamePlayed++;
-    }
 
     public String getPlayerName() {
         return playerName;

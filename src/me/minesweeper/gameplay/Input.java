@@ -22,6 +22,7 @@ public class Input {
     /**
      * สำหรับรับค่าจากแป้นพิมพ์ บันทึกจำนวนระเบิด
      * @param bomb รับ Object Bomb เพื่อเก็บจำนวนระเบิด
+     * ! Bug ข้อผิดพลาด คือ เมื่อรับ Input qty <= 0 || qty > 24 เจอปัญหาคือต้องรับ Input ต่อไป</=>
      */
     public void inputBomb(Bomb bomb) {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +33,6 @@ public class Input {
                 System.out.println("\n-----------------------------------------");
                 System.out.println("|\tError => Out of range input 1 to 25\t|");
                 System.out.println("-----------------------------------------\n");
-                scanner.nextLine();
                 inputBomb(bomb);
             }
             bomb.setQTYBomb(qty);
@@ -40,7 +40,6 @@ public class Input {
             System.out.println("\n-------------------------------------");
             System.out.println("|\tError => Please input number\t|");
             System.out.println("-------------------------------------\n");
-            scanner.nextLine();
             inputBomb(bomb);
         }
     }
@@ -59,19 +58,18 @@ public class Input {
         return pick;
     }
 
-    public int inputPosition(Table table, Bomb bomb) {
+    public int inputPosition(Menu menu, Table table, Bomb bomb) {
         Scanner scanner = new Scanner(System.in);
         int position = 0;
         try {
             System.out.print("Enter position => ");
             position = scanner.nextInt();
-            table.selectPosition(bomb, position);
+            table.selectPosition(menu, bomb, position);
         } catch (Exception e) {
             System.out.println("\n-------------------------------------");
             System.out.println("|\tError => Please input number ( 1 - 25 )\t|");
             System.out.println("-------------------------------------\n");
-            scanner.nextLine();
-            inputPosition(table, bomb);
+            inputPosition(menu, table, bomb);
         }
         return position;
     }
