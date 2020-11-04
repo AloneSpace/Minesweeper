@@ -7,9 +7,6 @@ public class Player {
     private int gameWin;
     private boolean isWin;
 
-    public Player() {
-    }
-
     public String getPlayerName() {
         return playerName;
     }
