@@ -7,6 +7,10 @@ public class Player {
     private int gameWin;
     private boolean isWin;
 
+    public Player() {
+        gamePlayed++;
+    }
+
     public String getPlayerName() {
         return playerName;
     }
@@ -17,6 +21,10 @@ public class Player {
 
     public int getGamePlayed() {
         return gamePlayed;
+    }
+
+    public void increaseGamePlayed() {
+        gamePlayed++;
     }
 
     public void setPlayerName(String playerName) {

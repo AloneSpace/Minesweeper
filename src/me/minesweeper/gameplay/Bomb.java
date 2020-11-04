@@ -1,9 +1,12 @@
 package me.minesweeper.gameplay;
 
+import java.util.ArrayList;
+
 public class Bomb {
 
     private int qty;
-    private int[] bombDrop;
+    private ArrayList<Integer> bombDrop = new ArrayList<>();
+    private ArrayList<Integer> safePosition = new ArrayList<>();
 
     /**
      * @param position เพื่อเช็คตำแหน่งของระเบิด
@@ -17,13 +20,37 @@ public class Bomb {
     }
 
     /**
-     * สุ่มตำแหน่งระเบิด และเก็บลงใน Array
+     * สุ่มตำแหน่งระเบิด และบันทึกลงใน Array
      */
     public void randBombDropPosition() {
-        for (int i = 0; i < qty; i++) {
-            double randomBombDrop = Math.ceil(Math.random() * qty);
-            bombDrop[i] = (int) randomBombDrop;
+        double checkSame = 0;
+        while (bombDrop.size() < qty) {
+            double randomBombDrop = Math.ceil(Math.random() * 25);
+            if (!bombDrop.contains((int) randomBombDrop)) {
+                bombDrop.add((int) randomBombDrop);
+            }
         }
+        for(int i = 1; i <= 25; i++) {
+            if(!bombDrop.contains(i)) {
+                safePosition.add(i);
+            }
+        }
+    }
+
+    /**
+     * สำหรับค้นหาว่าระเบิดอยู่ในช่องไหน
+     * @return Array ว่า Bomb แต่ละลูกอยู่ตำแหน่งใดบ้าง
+     */
+    public String getBombDrop() {
+        return bombDrop.toString();
+    }
+
+    /**
+     * สำหรับค้นหาว่าตำแหน่งที่ไม่มีระเบิด
+     * @return Array ตำแหน่งที่ไม่มีระเบิด
+     */
+    public String getSafePosition() {
+        return safePosition.toString();
     }
 
     /**
