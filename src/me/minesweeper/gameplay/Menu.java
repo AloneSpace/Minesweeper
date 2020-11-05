@@ -17,10 +17,14 @@ public class Menu {
         System.out.println(welcomeMsg);
         startGame(input, player, bomb);
     }
-    
+
+    /**
+     * @param input รับ Object Input เพื่อใช้สำหรับรับค่าจากแป้นคีย์บอร์ด
+     * @param player รับ Object Player เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
+     * @param bomb รับ Object Bomb เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
+     */
     public void startGame(Input input, Player player, Bomb bomb) {
         Table table = new Table();
-
         String playAgain = "";
         while(true) {
             table.printTable();
@@ -50,7 +54,7 @@ public class Menu {
         System.out.println("\n\n=============== [ " + status + " ]===============");
         System.out.println("\n" + message);
         System.out.println("All position of bomb => " + bomb.getBombDrop());
-        System.out.println("Safety position => " + bomb.getSafePosition());
+        System.out.println("Safe position => " + bomb.getSafePosition());
         System.out.println();
         bomb.randBombDropPosition();
     }
