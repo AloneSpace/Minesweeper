@@ -16,6 +16,7 @@ public class Bomb {
         for (int j : bombDrop) {
             if (j == position) return true;
         }
+        randBombDropPosition();
         return false;
     }
 
