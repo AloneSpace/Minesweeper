@@ -29,6 +29,10 @@ public class Menu {
         while(true) {
             table.printTable();
             int position = input.inputPosition(this, table, bomb);
+            if(position == -1) {
+                gameStatus(bomb, "You exit the game.", Status.EXIT);
+                break;
+            }
             boolean isBombDropPosition = bomb.isBombDropPosition(position);
             boolean isEndSelected = table.isEndSelected(bomb);
             if(isEndSelected) {
