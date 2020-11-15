@@ -28,7 +28,7 @@ public class Menu {
         String playAgain = "";
         while(true) {
             table.printTable();
-            int position = input.inputPosition(this, table, bomb);
+            int position = input.inputPosition(table, bomb);
             if(position == -1) {
                 gameStatus(bomb, "You exit the game.", Status.EXIT);
                 break;

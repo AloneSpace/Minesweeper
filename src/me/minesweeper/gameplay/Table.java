@@ -27,7 +27,7 @@ public class Table {
      * @param bomb รับ Object Bomb
      * @param position รับ position: int เพื่อเช็คดูว่าตำแหน่งนั้นมี
      */
-    public void selectPosition(Menu menu, Bomb bomb, int position) {
+    public void selectPosition(Bomb bomb, int position) {
         boolean isBombDropPosition = bomb.isBombDropPosition(position);
         if(!isBombDropPosition) {
             nowPosition[position-1] = "S";

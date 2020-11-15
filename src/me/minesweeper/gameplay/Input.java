@@ -39,9 +39,9 @@ public class Input {
                 bomb.setQTYBomb(qty2Int);
                 break;
             }
-            System.out.println("\n-------------------------------------");
-            System.out.println("|\tError => Please input number\t|");
-            System.out.println("-------------------------------------\n");
+            System.out.println("\n---------------------------------------------");
+            System.out.println("|\tError => Please input number ( 1 - 24 )\t|");
+            System.out.println("---------------------------------------------\n");
         }
     }
 
@@ -59,7 +59,12 @@ public class Input {
         return pick;
     }
 
-    public int inputPosition(Menu menu, Table table, Bomb bomb) {
+    /**
+     * @param table ใส่ Object Table เพื่อเรียกใช้งาน methods ใน table
+     * @param bomb ใส่ Object Bomb เพื่อติดตั่ง Bomb ในตาราง
+     * @return ตำแหน่งที่เราเลือก
+     */
+    public int inputPosition(Table table, Bomb bomb) {
         int position2Int;
         while(true) {
             Scanner scanner = new Scanner(System.in);
@@ -81,12 +86,12 @@ public class Input {
                     System.out.println("-----------------------------------------\n");
                     continue;
                 }
-                table.selectPosition(menu, bomb, position2Int);
+                table.selectPosition(bomb, position2Int);
                 break;
             }
-            System.out.println("\n-------------------------------------");
+            System.out.println("\n---------------------------------------------");
             System.out.println("|\tError => Please input number ( 1 - 25 )\t|");
-            System.out.println("-------------------------------------\n");
+            System.out.println("---------------------------------------------\n");
         }
         return position2Int;
     }
