@@ -45,6 +45,9 @@ public class Input {
         }
     }
 
+    /**
+     * @return String ว่าเราจะเล่นต่อหรือไม่
+     */
     public String inputPlayAgain() {
         String pick = "";
         Scanner scanner = new Scanner(System.in);
