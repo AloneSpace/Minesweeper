@@ -7,9 +7,12 @@ public class Player {
     private int gameWin;
 
     public Player() {
-        gamePlayed++;
+        increaseGamePlayed();
     }
 
+    /**
+     * @return String: ชื่อผู้เล่น
+     */
     public String getPlayerName() {
         return playerName;
     }
@@ -18,14 +21,23 @@ public class Player {
         return gameWin;
     }
 
+    /**
+     * @return int: จำนวนรอบที่เราเล่นทั้งหมด
+     */
     public int getGamePlayed() {
         return gamePlayed;
     }
 
+    /**
+     * เพื่อเพิ่มจำนวนรอบ เมื่อมีการเริ่มเล่นใหม่
+     */
     public void increaseGamePlayed() {
         gamePlayed++;
     }
 
+    /**
+     * @param playerName ใส่ชื่อผู้เล่น
+     */
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
