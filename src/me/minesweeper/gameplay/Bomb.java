@@ -23,7 +23,6 @@ public class Bomb {
      * สุ่มตำแหน่งระเบิด และบันทึกลงใน Array
      */
     public void randBombDropPosition() {
-        double checkSame = 0;
         bombDrop = new ArrayList<>();
         safePosition = new ArrayList<>();
         while (bombDrop.size() < qty) {

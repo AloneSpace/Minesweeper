@@ -42,6 +42,7 @@ public class Menu {
                 break;
             }
             if(isBombDropPosition) {
+                table.printBombTable(bomb, position);
                 gameStatus(bomb, "Gotcha the bomb here.", Status.LOSE);
                 playAgain = input.inputPlayAgain();
                 if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
@@ -62,4 +63,5 @@ public class Menu {
         System.out.println();
         bomb.randBombDropPosition();
     }
+
 }
