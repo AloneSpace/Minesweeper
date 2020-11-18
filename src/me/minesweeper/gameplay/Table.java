@@ -1,5 +1,7 @@
 package me.minesweeper.gameplay;
 
+import me.minesweeper.Player;
+
 public class Table {
 
     private final String[] nowPosition = new String[25];
@@ -7,7 +9,7 @@ public class Table {
 
     public Table() {
         for(int i = 0; i < 25; i++) {
-           nowPosition[i] = "P" + (i+1);
+            nowPosition[i] = "P" + (i+1);
         }
     }
 
@@ -29,14 +31,14 @@ public class Table {
     public void printBombTable(Bomb bomb, int position) {
         System.out.print("\n-----------------------------------------\n");
         for(int i = 0; i < 25; i++) {
-            if(bomb.isBombDropPosition(i+1)) {
-                if((i+1) == position) {
-                    nowPosition[i] = "\uD83D\uDCA5";
+            if(bomb.isBombDropPosition(i+1)) { // ถ้าตำแหน่งที่เลือกเจอระเบิด
+                if((i+1) == position) { //ถ้าตำแหน่งนั้น เป็นตำแหน่งที่เราเลือก
+                    nowPosition[i] = "\uD83D\uDCA5"; //เปลี่ยนเป็นไอคอนระเบิด
                 } else {
-                    nowPosition[i] = "\uD83E\uDDE8";
+                    nowPosition[i] = "\uD83E\uDDE8"; //เปลี่ยนเป็นไอคอนประทัด
                 }
             } else {
-                if(!nowPosition[i].equals("\uD83D\uDE06")) {
+                if(!nowPosition[i].equals("\uD83D\uDE06")) { //ถ้าตำแหน่ง
                     nowPosition[i] = "\uD83D\uDC9A";
                 } else {
                     nowPosition[i] = "\uD83D\uDE06";
@@ -46,15 +48,22 @@ public class Table {
             System.out.print("|\t" + nowPosition[i] + "\t");
         }
         System.out.print("|\n-----------------------------------------\n\n");
+        System.out.println("\uD83D\uDCA5 = The place where a bomb had exploded");
+        System.out.println("\uD83E\uDDE8 = The place where a bomb had planted");
+        System.out.println("\uD83D\uDE06 = The place where player picked");
+        System.out.println("\uD83D\uDC9A = The place where afe position");
     }
 
     /**
      * @param bomb รับ Object Bomb
      * @param position รับ position: int เพื่อเช็คดูว่าตำแหน่งนั้นมี
      */
-    public void selectPosition(Bomb bomb, int position) {
+    public void selectPosition(Bomb bomb, Player player, int position) {
         boolean isBombDropPosition = bomb.isBombDropPosition(position);
-        if(!isBombDropPosition) {
+        player.increasePickup();
+        if (isBombDropPosition) {
+            player.increaseBombPickup();
+        } else {
             nowPosition[position-1] = "\uD83D\uDE06";
             count++;
         }
