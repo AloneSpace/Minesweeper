@@ -67,7 +67,7 @@ public class Input {
      * @param bomb ใส่ Object Bomb เพื่อติดตั่ง Bomb ในตาราง
      * @return ตำแหน่งที่เราเลือก
      */
-    public int inputPosition(Table table, Bomb bomb) {
+    public int inputPosition(Table table, Player player, Bomb bomb) {
         int position2Int;
         while(true) {
             Scanner scanner = new Scanner(System.in);
@@ -89,7 +89,7 @@ public class Input {
                     System.out.println("-----------------------------------------\n");
                     continue;
                 }
-                table.selectPosition(bomb, position2Int);
+                table.selectPosition(bomb, player, position2Int);
                 break;
             }
             System.out.println("\n---------------------------------------------");
