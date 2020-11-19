@@ -11,7 +11,7 @@ public class Calculate {
      * @return double: Percentage ค่าเฉลี่ยจำนวนที่กดถูก
      */
     public double calPickupSafePositionPercentage(int pickup, int bombPickup) {
-        return ((pickup - bombPickup) / (double) pickup) * 100;
+        return pickup != 0 ? ((pickup - bombPickup) / (double) pickup) * 100 : 0;
     }
 
     /**
