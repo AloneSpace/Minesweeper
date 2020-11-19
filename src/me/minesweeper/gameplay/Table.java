@@ -2,6 +2,9 @@ package me.minesweeper.gameplay;
 
 import me.minesweeper.Player;
 
+/**
+ * Class Table ทำหน้าที่ Print ตาราง ในแต่ละตารางมีระเบิดหรือไม่ เป็นต้น
+ */
 public class Table {
 
     private final String[] nowPosition = new String[25];
@@ -26,22 +29,22 @@ public class Table {
     }
 
     /**
-     *
+     * สำหรับ Print ตารางทั้งหมดว่าในแต่ละตำแหน่งมีอะไรบ้าง
      */
-    public void printBombTable(Bomb bomb, int position) {
+    public void printSummaryTable(Bomb bomb, int position) {
         System.out.print("\n-----------------------------------------\n");
         for(int i = 0; i < 25; i++) {
             if(bomb.isBombDropPosition(i+1)) { // ถ้าตำแหน่งที่เลือกเจอระเบิด
-                if((i+1) == position) { //ถ้าตำแหน่งนั้น เป็นตำแหน่งที่เราเลือก
+                if((i+1) == position) { //ถ้าตำแหน่งนี้ เป็นตำแหน่งที่เราเลือก
                     nowPosition[i] = "\uD83D\uDCA5"; //เปลี่ยนเป็นไอคอนระเบิด
                 } else {
                     nowPosition[i] = "\uD83E\uDDE8"; //เปลี่ยนเป็นไอคอนประทัด
                 }
             } else {
-                if(!nowPosition[i].equals("\uD83D\uDE06")) { //ถ้าตำแหน่ง
-                    nowPosition[i] = "\uD83D\uDC9A";
+                if(!nowPosition[i].equals("\uD83D\uDE06")) { //ถ้าตำแหน่งนี้ เป็นตำแหน่งเป็นรูปยิ้ม
+                    nowPosition[i] = "\uD83D\uDC9A"; //เปลี่ยนเป็นไอคอนหัวใจสีเขียว
                 } else {
-                    nowPosition[i] = "\uD83D\uDE06";
+                    nowPosition[i] = "\uD83D\uDE06"; //เปลี่ยนเป็นไอคอนรูปหัวเราะ
                 }
             }
             if(i % 5 == 0 && i != 0) System.out.print("|\n-----------------------------------------\n");
@@ -51,7 +54,7 @@ public class Table {
         System.out.println("\uD83D\uDCA5 = The place where a bomb had exploded");
         System.out.println("\uD83E\uDDE8 = The place where a bomb had planted");
         System.out.println("\uD83D\uDE06 = The place where player picked");
-        System.out.println("\uD83D\uDC9A = The place where afe position");
+        System.out.println("\uD83D\uDC9A = The place where safe position");
     }
 
     /**

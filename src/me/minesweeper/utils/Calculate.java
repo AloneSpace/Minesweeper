@@ -1,5 +1,8 @@
 package me.minesweeper.utils;
 
+/**
+ * Class สำหรับคำนวณ Percentage
+ */
 public class Calculate {
 
     /**

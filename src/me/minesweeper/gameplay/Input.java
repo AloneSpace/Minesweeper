@@ -4,6 +4,9 @@ import me.minesweeper.Player;
 
 import java.util.Scanner;
 
+/**
+ * Class Input ทำหน้าที่รับ Input จาก User โดยตรงและส่งค่าไปยัง Class อื่นๆ
+ */
 public class Input {
 
 
@@ -46,6 +49,7 @@ public class Input {
     }
 
     /**
+     * สำหรับถามผู้เล่นว่าจะเล่นต่อหรือไม่
      * @return String ว่าเราจะเล่นต่อหรือไม่
      */
     public String inputPlayAgain() {
@@ -63,9 +67,10 @@ public class Input {
     }
 
     /**
+     * สำหรับเลือกตำแหน่งในตาราง
      * @param table ใส่ Object Table เพื่อเรียกใช้งาน methods ใน table
      * @param bomb ใส่ Object Bomb เพื่อติดตั่ง Bomb ในตาราง
-     * @return ตำแหน่งที่เราเลือก
+     * @return int: ตำแหน่งที่เราเลือก
      */
     public int inputPosition(Table table, Player player, Bomb bomb) {
         int position2Int;

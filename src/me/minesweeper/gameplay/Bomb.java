@@ -2,6 +2,9 @@ package me.minesweeper.gameplay;
 
 import java.util.ArrayList;
 
+/**
+ * Class Bomb ทำหน้าที่สุ่มระเบิดและเก็บระเบิดไปไว้ที่ตำแหน่งต่างๆในตาราง
+ */
 public class Bomb {
 
     private int qty;
@@ -54,6 +57,9 @@ public class Bomb {
         return safePosition.toString();
     }
 
+    /**
+     * @return int: ขนาดของตำแหน่งที่ปลอดภัยจากระเบิด
+     */
     public int getSizeofSafePosition() {
         return safePosition.size();
     }
@@ -65,13 +71,4 @@ public class Bomb {
         this.qty = qty;
     }
 
-    /**
-     * @param position หาตำแหน่งระเบิดทั้งแกน X,Y และแนวเฉียงว่า ระเบิดอยู่แถวไหน
-     * @return ส่งค่าเมื่อผู้เล่นเลือกตำแหน่งนี้จะมีระเบิดอยู่ห่างจากบล็อคที่ผู้เล่นเลือกกี่บล็อค
-     */
-    public int findNearByBomb(int position) {
-        int nearBlock;
-        nearBlock = 1;
-        return nearBlock;
-    }
 }

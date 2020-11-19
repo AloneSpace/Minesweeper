@@ -1,5 +1,8 @@
 package me.minesweeper;
 
+/**
+ * เป็น Class สำหรับเก็บ Attribute ของผู้เล่นโดยเฉพาะ
+ */
 public class Player {
 
     private String playerName;

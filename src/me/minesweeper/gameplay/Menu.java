@@ -4,6 +4,9 @@ import me.minesweeper.Player;
 import me.minesweeper.utils.Calculate;
 import me.minesweeper.utils.Status;
 
+/**
+ * Class Menu เป็นคลาสที่ทำหน้าที่ Interact กับ User โดยตรง เปรียบเสมือน FrontEnd
+ */
 public class Menu {
 
     /**
@@ -31,7 +34,7 @@ public class Menu {
             table.printTable();
             int position = input.inputPosition(table, player, bomb);
             if(position == -1) {
-                table.printBombTable(bomb, position);
+                table.printSummaryTable(bomb, position);
                 gameStatus(bomb, "You exit the game.", Status.EXIT);
                 break;
             }
@@ -39,7 +42,7 @@ public class Menu {
             boolean isEndSelected = table.isEndSelected(bomb);
             if(isEndSelected) {
                 player.increaseGameWin();
-                table.printBombTable(bomb, position);
+                table.printSummaryTable(bomb, position);
                 gameStatus(bomb, "No bomb has been selected.", Status.WIN);
                 playAgain = input.inputPlayAgain();
                 if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
@@ -47,7 +50,7 @@ public class Menu {
                 break;
             }
             if(isBombDropPosition) {
-                table.printBombTable(bomb, position);
+                table.printSummaryTable(bomb, position);
                 gameStatus(bomb, "Gotcha the bomb here.", Status.LOSE);
                 playAgain = input.inputPlayAgain();
                 if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
