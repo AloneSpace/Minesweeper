@@ -36,6 +36,7 @@ public class Menu {
             if(position == -1) {
                 table.printSummaryTable(bomb, position);
                 gameStatus(bomb, "You exit the game.", Status.EXIT);
+                playerStatus(player);
                 break;
             }
             boolean isBombDropPosition = bomb.isBombDropPosition(position);
@@ -83,9 +84,9 @@ public class Menu {
         double avg_lose = calculate.calLosePercentage(player.getGamePlayed(), player.getGameLose());
 
         System.out.println("\n\n=============== [ " + player.getPlayerName() + "'s Info ]===============\n\n");
-        System.out.println("Game Played => " + player.getGamePlayed() + "\tAvg. Pickup ( Safe Position) => " + String.format("%.2f", avg_safePickup));
-        System.out.println("Game Win => " + player.getGameWin() + "\t\tAvg. Win => " + String.format("%.2f", avg_win));
-        System.out.println("Game Lose => " + player.getGameLose() + "\t\tAvg. Lose => " + String.format("%.2f", avg_lose));
+        System.out.println("Game Played => " + player.getGamePlayed() + "\tAvg. Pickup ( Safe Position) => " + String.format("%.2f", avg_safePickup) + "%");
+        System.out.println("Game Win => " + player.getGameWin() + "\t\tAvg. Win => " + String.format("%.2f", avg_win) + "%");
+        System.out.println("Game Lose => " + player.getGameLose() + "\t\tAvg. Lose => " + String.format("%.2f", avg_lose) + "%");
     }
 
 }
