@@ -25,15 +25,22 @@ public class Player {
         gameWin++;
     }
 
+    /**
+     * เพิ่มจำนวนรอบที่ผู้เล่นเลือกตำแหน่งโดยที่ไม่โดนระเบิด
+     */
     public void increasePickup() {
         pickup++;
     }
 
+    /**
+     * เพิ่มจำนวนรอบที่ผู้เล่นเลือกตำแหน่งโดยที่โดนระเบิด
+     */
     public void increaseBombPickup() {
         bombPickup++;
     }
 
     /**
+     * บันทึกชื่อผู้เล่น
      * @param playerName ใส่ชื่อผู้เล่น
      */
     public void setPlayerName(String playerName) {

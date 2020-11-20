@@ -41,7 +41,7 @@ public class Controller {
     }
 
     /**
-     * @return
+     * @return Object player ทำหน้าที่เก็บข้อมูลผู้เล่นทั้งหมด
      */
     public Player getPlayer() {
         return player;

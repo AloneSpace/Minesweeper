@@ -12,6 +12,7 @@ public class Bomb {
     private ArrayList<Integer> safePosition;
 
     /**
+     * เช็คตำแหน่งระเบิด
      * @param position เพื่อเช็คตำแหน่งของระเบิด
      * @return true = ถ้าตำแหน่งที่รับมาตรงกับตำแหน่งระเบิด, false = ถ้าตำแหน่งที่รับมาไม่ตรงกับตำแหน่งระเบิด
      */
@@ -58,6 +59,7 @@ public class Bomb {
     }
 
     /**
+     * จำนวนตำแหน่งทั้งหมดที่ไม่มีระเบิด
      * @return int: ขนาดของตำแหน่งที่ปลอดภัยจากระเบิด
      */
     public int getSizeofSafePosition() {
@@ -65,6 +67,7 @@ public class Bomb {
     }
 
     /**
+     * บันทึกจำนวนระเบิดทั้งหมด
      * @param qty ส่งค่าจำนวนระเบิดว่าต้องการเท่าไหร่
      */
     public void setQTYBomb(int qty) {

@@ -23,6 +23,7 @@ public class Menu {
     }
 
     /**
+     * Method นี้ใช้สำหรับเริ่มเกมพร้อมส่งค่าไปยัง Method ต่างๆ
      * @param input รับ Object Input เพื่อใช้สำหรับรับค่าจากแป้นคีย์บอร์ด
      * @param player รับ Object Player เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
      * @param bomb รับ Object Bomb เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
@@ -63,7 +64,10 @@ public class Menu {
     }
 
     /**
+     * เพื่อโชว์สถานะของเกม
      * @param bomb รับ Object Bomb เพื่อตรวจดูว่า ที่ไหนมีระเบิดและไม่มีระเบิด
+     * @param message รับ String message เพื่อ Output ข้อความ
+     * @param status รับ Enum status เพื่อโชว์สถานะว่าชนะ แพ้ หรือออกจากการเล่น
      */
     public void gameStatus(Bomb bomb, String message, Status status) {
         System.out.println("\n\n=============== [ " + status + " ]===============");
@@ -71,10 +75,10 @@ public class Menu {
         System.out.println("All position of bomb => " + bomb.getBombDrop());
         System.out.println("Safe position => " + bomb.getSafePosition());
         System.out.println();
-        bomb.randBombDropPosition();
     }
 
     /**
+     * โชว์สถานะของผู้เล่นทั้งหมด ว่าเล่นกี่รอบแล้ว ชนะกี่รอบ แพ้กี่รอบ พร้อมกับโชว์เปอร์เซ็น
      * @param player รับ Object Player เพื่อดึงข้อมูลจาก player
      */
     public void playerStatus(Player player) {
