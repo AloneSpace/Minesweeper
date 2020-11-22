@@ -20,19 +20,20 @@ public class Table {
      * สำหรับ Print ตาราง
      */
     public void printTable() {
-        System.out.print("\n-----------------------------------------\n");
+        System.out.print("\n-------------------------------------------------------------\n");
         for(int i = 0; i < 25; i++) {
-            if(i % 5 == 0 && i != 0) System.out.print("|\n-----------------------------------------\n");
-            System.out.print("|\t" + nowPosition[i] + "\t");
+            if(i % 5 == 0 && i != 0) System.out.print("|\n-------------------------------------------------------------\n");
+            if((i+1) >= 10) System.out.print("|    " + nowPosition[i] + "    ");
+            else System.out.print("|    " + nowPosition[i] + "     ");
         }
-        System.out.print("|\n-----------------------------------------\n\n");
+        System.out.print("|\n-------------------------------------------------------------\n\n");
     }
 
     /**
      * สำหรับ Print ตารางทั้งหมดว่าในแต่ละตำแหน่งมีอะไรบ้าง
      */
     public void printSummaryTable(Bomb bomb, int position) {
-        System.out.print("\n-----------------------------------------\n");
+        System.out.print("\n--------------------------------------------------------\n");
         for(int i = 0; i < 25; i++) {
             if(bomb.isBombDropPosition(i+1)) { // ถ้าตำแหน่งที่เลือกเจอระเบิด
                 if((i+1) == position) { //ถ้าตำแหน่งนี้ เป็นตำแหน่งที่เราเลือก
@@ -47,10 +48,10 @@ public class Table {
                     nowPosition[i] = "\uD83D\uDE06"; //เปลี่ยนเป็นไอคอนรูปหัวเราะ
                 }
             }
-            if(i % 5 == 0 && i != 0) System.out.print("|\n-----------------------------------------\n");
-            System.out.print("|\t" + nowPosition[i] + "\t");
+            if(i % 5 == 0 && i != 0) System.out.print("|\n--------------------------------------------------------\n");
+            System.out.print("|    " + nowPosition[i] + "    ");
         }
-        System.out.print("|\n-----------------------------------------\n\n");
+        System.out.print("|\n--------------------------------------------------------\n\n");
         System.out.println("\uD83D\uDCA5 = The place where a bomb had exploded");
         System.out.println("\uD83E\uDDE8 = The place where a bomb had planted");
         System.out.println("\uD83D\uDE06 = The place where player picked");

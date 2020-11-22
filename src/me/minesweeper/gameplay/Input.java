@@ -34,17 +34,17 @@ public class Input {
             if(qty.matches("-?\\d+(\\.\\d+)?")) {
                 int qty2Int = Integer.parseInt(qty);
                 if(qty2Int <= 0 || qty2Int > 24)  {
-                    System.out.println("\n-----------------------------------------");
-                    System.out.println("|\tError => Out of range input 1 to 24\t|");
-                    System.out.println("-----------------------------------------\n");
+                    System.out.println("\n---------------------------------------------");
+                    System.out.println("|    Error => Out of range input 1 to 24    |");
+                    System.out.println("---------------------------------------------\n");
                     continue;
                 }
                 bomb.setQTYBomb(qty2Int);
                 break;
             }
-            System.out.println("\n---------------------------------------------");
-            System.out.println("|\tError => Please input number ( 1 - 24 )\t|");
-            System.out.println("---------------------------------------------\n");
+            System.out.println("\n-------------------------------------------------");
+            System.out.println("|    Error => Please input number ( 1 - 24 )    |");
+            System.out.println("-------------------------------------------------\n");
         }
     }
 
@@ -59,9 +59,9 @@ public class Input {
             System.out.print("Do you want to play again ( Y,y or N,n ) => ");
             pick = scanner.next();
             if((pick.equals("Y") || pick.equals("y") || pick.equals("N") || pick.equals("n"))) break;
-            System.out.println("\n---------------------------------------------------------------------");
-            System.out.println("|\tError => Please input only one letter ( Y,y = Yes, N,n = No )\t|");
-            System.out.println("---------------------------------------------------------------------");
+            System.out.println("\n-------------------------------------------------------------------------");
+            System.out.println("|     Error => Please input only one letter ( Y,y = Yes, N,n = No )     |");
+            System.out.println("-------------------------------------------------------------------------");
         }
         return pick;
     }
@@ -82,24 +82,24 @@ public class Input {
                 position2Int = Integer.parseInt(position);
                 if(position2Int == -1) break;
                 if(position2Int <= 0 || position2Int > 25) {
-                    System.out.println("\n-----------------------------------------");
-                    System.out.println("|\tError => Out of range input 1 to 25\t|");
-                    System.out.println("-----------------------------------------\n");
+                    System.out.println("\n-----------------------------------------------");
+                    System.out.println("|     Error => Out of range input 1 to 25     |");
+                    System.out.println("-----------------------------------------------\n");
                     continue;
                 }
                 boolean isSamePosition = table.isSamePosition(position2Int);
                 if(isSamePosition) {
-                    System.out.println("\n-----------------------------------------");
-                    System.out.println("|\tError => You select same position\t|");
-                    System.out.println("-----------------------------------------\n");
+                    System.out.println("\n---------------------------------------------");
+                    System.out.println("|     Error => You select same position     |");
+                    System.out.println("---------------------------------------------\n");
                     continue;
                 }
                 table.selectPosition(bomb, player, position2Int);
                 break;
             }
-            System.out.println("\n---------------------------------------------");
-            System.out.println("|\tError => Please input number ( 1 - 25 )\t|");
-            System.out.println("---------------------------------------------\n");
+            System.out.println("\n---------------------------------------------------");
+            System.out.println("|     Error => Please input number ( 1 - 25 )     |");
+            System.out.println("---------------------------------------------------\n");
         }
         return position2Int;
     }
