@@ -5,14 +5,15 @@ import me.minesweeper.Player;
 import java.util.Scanner;
 
 /**
- * Class Input ทำหน้าที่รับ Input จาก User โดยตรงและส่งค่าไปยัง Class อื่นๆ
+ * The Input class use for let user input data and send to another class.
+ * @author Nopphasorn
  */
 public class Input {
 
 
     /**
-     * สำหรับรับค่าจากแป้นพิมพ์ บันทึกชื่อผู้เล่น
-     * @param player รับ Object Player เพื่อเก็บ String PlayerName
+     * Let user input player name.
+     * @param player This player object use for set player name.
      */
     public void inputPlayerName(Player player) {
         Scanner scanner = new Scanner(System.in);
@@ -23,15 +24,15 @@ public class Input {
     }
 
     /**
-     * สำหรับรับค่าจากแป้นพิมพ์ บันทึกจำนวนระเบิด
-     * @param bomb รับ Object Bomb เพื่อเก็บจำนวนระเบิด
+     * Let user input quantity bomb.
+     * @param bomb This bomb object use for set quantity bomb.
      */
     public void inputBomb(Bomb bomb) {
         while(true) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter how many of bomb ( 1 - 24 ) => ");
             String qty = scanner.next();
-            if(qty.matches("-?\\d+(\\.\\d+)?")) {
+            if(qty.matches("-?\\d+(\\d+)?")) {
                 int qty2Int = Integer.parseInt(qty);
                 if(qty2Int <= 0 || qty2Int > 24)  {
                     System.out.println("\n---------------------------------------------");
@@ -49,8 +50,8 @@ public class Input {
     }
 
     /**
-     * สำหรับถามผู้เล่นว่าจะเล่นต่อหรือไม่
-     * @return String ว่าเราจะเล่นต่อหรือไม่
+     * Ask user for want to play again.
+     * @return Answer whether to play or not.
      */
     public String inputPlayAgain() {
         String pick = "";
@@ -67,10 +68,11 @@ public class Input {
     }
 
     /**
-     * สำหรับเลือกตำแหน่งในตาราง
-     * @param table ใส่ Object Table เพื่อเรียกใช้งาน methods ใน table
-     * @param bomb ใส่ Object Bomb เพื่อติดตั่ง Bomb ในตาราง
-     * @return int: ตำแหน่งที่เราเลือก
+     * Let user input the position.
+     * @param table The table class use for set the position.
+     * @param player The player class use send player information to another class.
+     * @param bomb The bomb class use for check if the position same as bomb position.
+     * @return The position where player selected.
      */
     public int inputPosition(Table table, Player player, Bomb bomb) {
         int position2Int;
@@ -78,7 +80,7 @@ public class Input {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter position ( -1 to exit game ) => ");
             String position = scanner.next();
-            if(position.matches("-?\\d+(\\.\\d+)?")) {
+            if(position.matches("-?\\d+(\\d+)?")) {
                 position2Int = Integer.parseInt(position);
                 if(position2Int == -1) break;
                 if(position2Int <= 0 || position2Int > 25) {

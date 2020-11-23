@@ -5,12 +5,17 @@ import me.minesweeper.utils.Calculate;
 import me.minesweeper.utils.Status;
 
 /**
- * Class Menu เป็นคลาสที่ทำหน้าที่ Interact กับ User โดยตรง เปรียบเสมือน FrontEnd
+ * The Menu class use for interact with user. Like front-end.
+ * @author Karunpat
  */
 public class Menu {
 
     /**
-     * หน้านี้เปรียบเสมอหน้า GameMenu เพื่อเข้าสู่การเล่นเกม
+     * For print the monitor of game menu.
+     * @param firstTime Use for check if first time or not.
+     * @param input Use for input bomb qty.
+     * @param player Use for get and set player information.
+     * @param bomb Use for random bomb drop position.
      */
     public void gameMenu(boolean firstTime, Input input, Player player, Bomb bomb) {
         if(firstTime) input.inputPlayerName(player);
@@ -23,16 +28,16 @@ public class Menu {
     }
 
     /**
-     * Method นี้ใช้สำหรับเริ่มเกมพร้อมส่งค่าไปยัง Method ต่างๆ
-     * @param input รับ Object Input เพื่อใช้สำหรับรับค่าจากแป้นคีย์บอร์ด
-     * @param player รับ Object Player เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
-     * @param bomb รับ Object Bomb เพื่อใช้สำหรับค่าจากแป้นคีย์บอร์ด
+     * This method use for start the game and send data to another class.
+     * @param input Input object use for input data.
+     * @param player Player object use for information of player to another object.
+     * @param bomb Bomb object use for check the bomb position.
      */
     public void startGame(Input input, Player player, Bomb bomb) {
         Table table = new Table();
         String playAgain = "";
         while(true) {
-            table.printTable();
+            table.printTable(bomb);
             int position = input.inputPosition(table, player, bomb);
             if(position == -1) {
                 table.printSummaryTable(bomb, position);
@@ -42,18 +47,18 @@ public class Menu {
             }
             boolean isBombDropPosition = bomb.isBombDropPosition(position);
             boolean isEndSelected = table.isEndSelected(bomb);
-            if(isEndSelected) {
-                player.increaseGameWin();
+            if(isBombDropPosition) {
                 table.printSummaryTable(bomb, position);
-                gameStatus(bomb, "No bomb has been selected.", Status.WIN);
+                gameStatus(bomb, "Gotcha the bomb here.", Status.LOSE);
                 playAgain = input.inputPlayAgain();
                 if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
                 else playerStatus(player);
                 break;
             }
-            if(isBombDropPosition) {
+            if(isEndSelected) {
+                player.increaseGameWin();
                 table.printSummaryTable(bomb, position);
-                gameStatus(bomb, "Gotcha the bomb here.", Status.LOSE);
+                gameStatus(bomb, "No bomb has been selected.", Status.WIN);
                 playAgain = input.inputPlayAgain();
                 if(playAgain.equals("Y")|| playAgain.equals("y")) gameMenu(false, input, player, bomb);
                 else playerStatus(player);
@@ -64,10 +69,10 @@ public class Menu {
     }
 
     /**
-     * เพื่อโชว์สถานะของเกม
-     * @param bomb รับ Object Bomb เพื่อตรวจดูว่า ที่ไหนมีระเบิดและไม่มีระเบิด
-     * @param message รับ String message เพื่อ Output ข้อความ
-     * @param status รับ Enum status เพื่อโชว์สถานะว่าชนะ แพ้ หรือออกจากการเล่น
+     * This method use for print game status.
+     * @param bomb Bomb object use for print safe and bomb position.
+     * @param message Print the message.
+     * @param status Get the state of game.
      */
     public void gameStatus(Bomb bomb, String message, Status status) {
         System.out.println("\n\n=============== [ " + status + " ]===============");
@@ -78,8 +83,8 @@ public class Menu {
     }
 
     /**
-     * โชว์สถานะของผู้เล่นทั้งหมด ว่าเล่นกี่รอบแล้ว ชนะกี่รอบ แพ้กี่รอบ พร้อมกับโชว์เปอร์เซ็น
-     * @param player รับ Object Player เพื่อดึงข้อมูลจาก player
+     * The method use for print summary of player.
+     * @param player Player object use for receive player information.
      */
     public void playerStatus(Player player) {
         Calculate calculate = new Calculate();

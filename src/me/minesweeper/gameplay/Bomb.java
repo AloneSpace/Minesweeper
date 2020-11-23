@@ -3,7 +3,8 @@ package me.minesweeper.gameplay;
 import java.util.ArrayList;
 
 /**
- * Class Bomb ทำหน้าที่สุ่มระเบิดและเก็บระเบิดไปไว้ที่ตำแหน่งต่างๆในตาราง
+ * This Bomb class for store and save bomb data.
+ * @author Karunpat
  */
 public class Bomb {
 
@@ -12,9 +13,9 @@ public class Bomb {
     private ArrayList<Integer> safePosition;
 
     /**
-     * เช็คตำแหน่งระเบิด
-     * @param position เพื่อเช็คตำแหน่งของระเบิด
-     * @return true = ถ้าตำแหน่งที่รับมาตรงกับตำแหน่งระเบิด, false = ถ้าตำแหน่งที่รับมาไม่ตรงกับตำแหน่งระเบิด
+     * For check a bomb position.
+     * @param position a position for check bomb position.
+     * @return true if bomb position equal to position to check. false if bomb position not equal to postion to check.
      */
     public boolean isBombDropPosition(int position) {
         for (int j : bombDrop) {
@@ -24,7 +25,7 @@ public class Bomb {
     }
 
     /**
-     * สุ่มตำแหน่งระเบิด และบันทึกลงใน Array
+     * Random bombs and store to data.
      */
     public void randBombDropPosition() {
         bombDrop = new ArrayList<>();
@@ -43,32 +44,32 @@ public class Bomb {
     }
 
     /**
-     * สำหรับค้นหาว่าระเบิดอยู่ในช่องไหน
-     * @return Array ว่า Bomb แต่ละลูกอยู่ตำแหน่งใดบ้าง
+     * For check the positions where the bombs are store.
+     * @return The positions where the bombs are store.
      */
     public String getBombDrop() {
         return bombDrop.toString();
     }
 
     /**
-     * สำหรับค้นหาว่าตำแหน่งที่ไม่มีระเบิด
-     * @return Array ตำแหน่งที่ไม่มีระเบิด
+     * For check the positions where the safe position.
+     * @return The positions where the safe position.
      */
     public String getSafePosition() {
         return safePosition.toString();
     }
 
     /**
-     * จำนวนตำแหน่งทั้งหมดที่ไม่มีระเบิด
-     * @return int: ขนาดของตำแหน่งที่ปลอดภัยจากระเบิด
+     * For check size of safe positions.
+     * @return Size of position of safe position.
      */
     public int getSizeofSafePosition() {
         return safePosition.size();
     }
 
     /**
-     * บันทึกจำนวนระเบิดทั้งหมด
-     * @param qty ส่งค่าจำนวนระเบิดว่าต้องการเท่าไหร่
+     * For save the quantity of bomb.
+     * @param qty Quantity of bomb.
      */
     public void setQTYBomb(int qty) {
         this.qty = qty;

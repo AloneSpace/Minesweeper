@@ -3,13 +3,17 @@ package me.minesweeper.gameplay;
 import me.minesweeper.Player;
 
 /**
- * Class Table ทำหน้าที่ Print ตาราง ในแต่ละตารางมีระเบิดหรือไม่ เป็นต้น
+ * This Table class use for store table data.
+ * @author Noppasorn
  */
 public class Table {
 
     private final String[] nowPosition = new String[25];
     private static int count;
 
+    /**
+     * Initial default position.
+     */
     public Table() {
         for(int i = 0; i < 25; i++) {
             nowPosition[i] = "P" + (i+1);
@@ -17,20 +21,24 @@ public class Table {
     }
 
     /**
-     * สำหรับ Print ตาราง
+     * This method for print table.
+     * @param bomb For show how many of safe position.
      */
-    public void printTable() {
+    public void printTable(Bomb bomb) {
         System.out.print("\n-------------------------------------------------------------\n");
         for(int i = 0; i < 25; i++) {
             if(i % 5 == 0 && i != 0) System.out.print("|\n-------------------------------------------------------------\n");
-            if((i+1) >= 10) System.out.print("|    " + nowPosition[i] + "    ");
+            if((i+1) >= 10 && !nowPosition[i].equals("\uD83D\uDE06")) System.out.print("|    " + nowPosition[i] + "    ");
             else System.out.print("|    " + nowPosition[i] + "     ");
         }
         System.out.print("|\n-------------------------------------------------------------\n\n");
+        System.out.println("Safe position remaining => " + (bomb.getSizeofSafePosition() - count));
     }
 
     /**
-     * สำหรับ Print ตารางทั้งหมดว่าในแต่ละตำแหน่งมีอะไรบ้าง
+     * This method for print the table and specific position information.
+     * @param bomb Use for check if is bomb drop position or not.
+     * @param position Use for check if is bomb drop position or not.
      */
     public void printSummaryTable(Bomb bomb, int position) {
         System.out.print("\n--------------------------------------------------------\n");
@@ -59,14 +67,17 @@ public class Table {
     }
 
     /**
-     * @param bomb รับ Object Bomb
-     * @param position รับ position: int เพื่อเช็คดูว่าตำแหน่งนั้นมี
+     * This method for select position and save to data.
+     * @param bomb Bomb object use for check if position input same as bomb position.
+     * @param player Player object use for increase pickup or increase bomb pickup.
+     * @param position Position to check.
      */
     public void selectPosition(Bomb bomb, Player player, int position) {
         boolean isBombDropPosition = bomb.isBombDropPosition(position);
         player.increasePickup();
         if (isBombDropPosition) {
             player.increaseBombPickup();
+            count = 0;
         } else {
             nowPosition[position-1] = "\uD83D\uDE06";
             count++;
@@ -74,16 +85,22 @@ public class Table {
     }
 
     /**
-     * @param bomb รับ Object Bomb เพื่อเช็คว่า จำนวนพื้นที่ที่ปลอดภัยเท่ากับจำนวนรอบที่เลือกหรือไม่
-     * @return true ถ้าจำนวนพื้นที่ปลอดภัย == จำนวนรอบที่เลือก,  false ถ้า จำนวนพื้นที่ปลอดภัย != จำนวนรอบที่เลือก
+     * This method use for check is count equal to size of safe position or not.
+     * @param bomb Bomb object for check bomb information.
+     * @return true if count equal to size of safe position, false if count not equal to size of safe position.
      */
     public boolean isEndSelected(Bomb bomb) {
-        return count == bomb.getSizeofSafePosition();
+        if(count == bomb.getSizeofSafePosition()) {
+            count = 0;
+            return true;
+        }
+        return false;
     }
 
     /**
-     * @param position รับ position: int() เพื่อเช็คตำแหน่งว่าซ้ำกันหรือไม่
-     * @return true ถ้าตำแหน่งที่ Input ซ้ำกัน, false ถ้าตำแหน่งที่ Input ไม่ซ้ำกัน
+     * This method use for check if position same as previous position.
+     * @param position Position to check.
+     * @return true if position same as previous position, false if position not same as previous position.
      */
     public boolean isSamePosition(int position) {
         for(int i = 0; i < nowPosition.length; i++) {

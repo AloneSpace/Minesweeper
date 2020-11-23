@@ -2,7 +2,12 @@ package me.minesweeper;
 
 import me.minesweeper.gameplay.Controller;
 
+/**
+ * For start application
+ * @author Nopphasorn
+ */
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("----------------------------------");
         System.out.println("|                                |");

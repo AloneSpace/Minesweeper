@@ -3,7 +3,8 @@ package me.minesweeper.gameplay;
 import me.minesweeper.Player;
 
 /**
- * ส่วนกลางที่คอยควบส่ง Class ต่างๆ
+ * The Controller class is the center to create an object and send object to another class.
+ * @author Warisara
  */
 public class Controller {
 
@@ -12,6 +13,9 @@ public class Controller {
     private final Bomb bomb;
     private final Player player;
 
+    /**
+     * Create all object
+     */
     public Controller() {
         menu = new Menu();
         input = new Input();
@@ -20,28 +24,32 @@ public class Controller {
     }
 
     /**
-     * @return Object menu เพื่อนำไปใช้ต่อไป
+     * Get Menu object for print output.
+     * @return Menu object.
      */
     public Menu getMenu() {
         return menu;
     }
 
     /**
-     * @return Object input เพื่อให้ User สามารถ Input ได้
+     * Get Input object for let user input data.
+     * @return Input object.
      */
     public Input getInput() {
         return input;
     }
 
     /**
-     * @return Object bomb ทำหน้าที่สุ่มระเบิด หาตำแหน่งระเบิด เป็นต้น
+     * Get Bomb object for use information of bombs.
+     * @return Bomb object.
      */
     public Bomb getBomb() {
         return bomb;
     }
 
     /**
-     * @return Object player ทำหน้าที่เก็บข้อมูลผู้เล่นทั้งหมด
+     * Get Player object for use information of players.
+     * @return Player object.
      */
     public Player getPlayer() {
         return player;

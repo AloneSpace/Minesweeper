@@ -1,7 +1,8 @@
 package me.minesweeper.utils;
 
 /**
- * เก็บสถานะตัวแปร
+ * Store state of game.
+ * @author Warisara
  */
 public enum Status {
     WIN,LOSE,EXIT
